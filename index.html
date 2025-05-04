@@ -1,0 +1,111 @@
+from zipfile import ZipFile
+import os
+
+# إعداد مجلد العمل والملف
+html_content = """<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DamaKom | دعمكم</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #FFA500, #FF6347);
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            padding: 30px 0 10px;
+        }
+        header img {
+            width: 180px;
+            border-radius: 20px;
+        }
+        .logo h1 {
+            margin-top: 10px;
+            font-size: 28px;
+        }
+        .links {
+            margin: 30px 20px;
+            flex: 1;
+        }
+        .link-button {
+            display: block;
+            background-color: #ffffff20;
+            color: white;
+            padding: 18px 25px;
+            text-decoration: none;
+            margin: 12px auto;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 350px;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .link-button:hover {
+            background-color: #ffffff40;
+        }
+        .developer {
+            font-size: 15px;
+            margin-top: 30px;
+            color: #eee;
+        }
+        .developer img {
+            width: 28px;
+            vertical-align: middle;
+            margin-right: 5px;
+            border-radius: 50%;
+        }
+        footer {
+            margin: 20px 0 10px;
+            font-size: 14px;
+            color: #f2f2f2;
+            border-top: 1px solid #ffffff33;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="d14ed895-57b0-4d0f-bc8e-9f8a6c921337.png" alt="شعار دعمكم">
+        <div class="logo">
+            <h1>DamaKom | دعمكم</h1>
+        </div>
+    </header>
+
+    <div class="links">
+        <a href="https://t.me/usdt_2024hotbot" class="link-button">بوت الشحن (USDT)</a>
+        <a href="https://t.me/DamaKom_bot_bot/833" class="link-button">الأسعار</a>
+        <a href="https://t.me/damkom_bot_bot" class="link-button">قناة البوت</a>
+    </div>
+
+    <div class="developer">
+        <img src="IMG_20250502_144223_661.jpg" alt="المطور">
+        <span>للتواصل: <a style="color:#fff;text-decoration:underline;" href="https://t.me/Bobusmiste">@Bobusmiste</a></span>
+    </div>
+
+    <footer>
+        جميع الحقوق محفوظة © DamaKom | دعمكم
+    </footer>
+</body>
+</html>
+"""
+
+# إنشاء الملفات
+os.makedirs("/mnt/data/website", exist_ok=True)
+html_path = "/mnt/data/website/index.html"
+with open(html_path, "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+# إنشاء ملف مضغوط
+zip_path = "/mnt/data/damakom-website.zip"
+with ZipFile(zip_path, 'w') as zipf:
+    zipf.write(html_path, arcname="index.html")
+
+zip_path
